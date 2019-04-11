@@ -16,7 +16,7 @@
   <body>
     <!-- Navigation Bar -->
     <nav role="navigation" class="navbar navbar-custom navbar-fixed-top">
-        <div class="container">
+        <div class="container-fluid">
             <div class="navbar-header">
                 <a href="#" class="navbar-brand">Online Notes</a>
                 <button type="button" class="navbar-toggle" data-target="#navbarCollapse" data-toggle="collapse">
@@ -59,7 +59,7 @@
                     <div class="modal-body">
                         
                         <!-- Login message from PHP file -->
-                        <div id="loginerror"></div>
+                        <div id="loginmessage"></div>
                         
                         <div class="form-group">
                             <label for="loginemail" class="sr-only">Email:</label>
@@ -103,7 +103,7 @@
                     <div class="modal-body">
                         
                         <!-- Sign up message from PHP file -->
-                        <div id="signuperror"></div>
+                        <div id="signupmessage"></div>
                         
                         <div class="form-group">
                             <label for="username" class="sr-only">Username:</label>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="form-group">
                             <label for="confpass" class="sr-only">Confirm Password:</label>
-                            <input class="form-control" type="password" id="confpass" name="confpass" placeholder="Confirm password" maxlength="30">
+                            <input class="form-control" type="password" id="password2" name="password2" placeholder="Confirm password" maxlength="30">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -145,7 +145,7 @@
                     <div class="modal-body">
                         
                         <!-- Forgot password message from PHP file -->
-                        <div id="forgotpasserror"></div>
+                        <div id="forgotpassmessage"></div>
                         
                         <div class="form-group">
                             <label for="forgotpassemail" class="sr-only">Email:</label>
@@ -177,5 +177,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

@@ -133,7 +133,7 @@ body {
     text-align: center;
     letter-spacing: 2.5px;
     padding: 10px;
-    margin-top: 160px;
+    margin-top: 130px;
     position: relative;
 }
 
@@ -163,4 +163,38 @@ body {
     text-align: center;
     color: #F9FFF3;
     padding-top: 10px;
+}
+
+/* Notes field */
+#notesField {
+    margin-top: 120px;
+}
+
+.buttons {
+    margin-bottom: 20px;    
+}
+
+#allNotes, #done, #notePad {
+    display: none;
+}
+
+#notePad textarea {
+    min-width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.5em;
+    border-left-width: 20px;
+    border-color: #c96688;
+    color: #c96688;
+    background-color: #ffefff;
+    padding: 10px;
+}
+
+/* Profile field */
+#profileField {
+    margin-top: 100px;
+}
+
+tr {
+    cursor: pointer;
 }
