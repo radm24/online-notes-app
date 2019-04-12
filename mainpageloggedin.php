@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["user_id"])) {
+        header("location: index.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +42,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Logged in as <b>username</b><?php  ?></a></li>
-                    <li><a href="#">Log out</a></li>
+                    <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
             </div>
         </div>

@@ -39,7 +39,7 @@
     <?php
         //If email or activation key is missing show an error
         if (!isset($_GET["email"]) || !isset($_GET["key"])) {
-            echo '<div class="alert alert-danger>There was an error. Please click on the activation your received by email.</div>';
+            echo '<div class="alert alert-danger>There was an error. Please click on the activation link your received by email.</div>';
             exit;
         }
         //Store them in two variables
