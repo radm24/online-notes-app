@@ -174,7 +174,7 @@ body {
     margin-bottom: 20px;    
 }
 
-#allNotes, #done, #notePad {
+#allNotes, #done, #notePad, .delete {
     display: none;
 }
 
@@ -197,4 +197,32 @@ body {
 
 tr {
     cursor: pointer;
+}
+
+/* Loading notes */
+.noteheader {
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 0 10px;
+    background: linear-gradient(#fff, #eceae7); 
+}
+
+.noteheader .text {
+    font-size: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.noteheader .timetext {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/* Delete button */
+.delete button {
+    width: 100%;
 }

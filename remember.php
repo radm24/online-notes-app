@@ -51,7 +51,7 @@
             }
             //Log the user in and redirect to notes page
             $_SESSION["user_id"] = $row["user_id"];
-            header("location: mainpageloggedin.php");
+            header("location: mynotes.php");
         } 
     }
 ?>

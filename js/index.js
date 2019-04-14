@@ -35,7 +35,7 @@ $("#loginform").submit((event) => {
         data: logindata,
         success: (data) => {
             if (data.trim() === "success") {
-                window.location = "mainpageloggedin.php";
+                window.location = "mynotes.php";
             } else {
                 $("#loginmessage").html(data);
             }

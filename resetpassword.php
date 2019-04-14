@@ -84,7 +84,7 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+        <script src="js/libs/bootstrap.min.js"></script>
         <!-- Script for Ajax call to storeresetpassword.php which processes form data -->
         <script>
             //Once the form is submitted

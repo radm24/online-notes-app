@@ -1,3 +1,23 @@
+<?php
+    session_start();
+    if(!isset($_SESSION["user_id"])) {
+        header("location: index.php");
+    }
+    include("connection.php");
+    $user_id = $_SESSION["user_id"];
+    //get username and email
+    $sql = "SELECT * FROM users WHERE user_id = '$user_id'";
+    $result = mysqli_query($link, $sql);
+    $count = mysqli_num_rows($result);
+    if ($count == 1) {
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $username = $row["username"];
+        $email = $row{"email"};
+    } else {
+        echo "There was an error retrieving the username and email from the database!";
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,17 +51,17 @@
                     <li class="active"><a href="#">Profile</a></li>
                     <li><a href="#">Help</a></li>
                     <li><a href="#">Contact us</a></li>
-                    <li><a href="#">My Notes</a></li>
+                    <li><a href="mynotes.php">My Notes</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Logged in as <b>username</b><?php  ?></a></li>
-                    <li><a href="#loginModal">Log out</a></li>
+                    <li><a href="#">Logged in as <b><?= $username; ?></b></a></li>
+                    <li><a href="index.php?logout=1">Log out</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     
-    <!-- Notes container -->
+    <!-- Profile Settings -->
     <div class="container" id="profileField">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -50,11 +70,11 @@
                     <table class="table table-hover table-condensed table-bordered">
                         <tr data-target="#updateusernameModal" data-toggle="modal">
                             <td>Username</td>
-                            <td>value</td>
+                            <td><?= $username; ?></td>
                         </tr>
                         <tr data-target="#updateemailModal" data-toggle="modal">
                             <td>Email</td>
-                            <td>value</td>
+                            <td><?= $email; ?></td>
                         </tr>
                         <tr data-target="#updatepasswordModal" data-toggle="modal">
                             <td>Password</td>
@@ -77,12 +97,12 @@
                     </div>
                     <div class="modal-body">
                         
-                        <!-- Login message from PHP file -->
+                        <!-- Update username message from PHP file -->
                         <div id="updateusernamemessage"></div>
                         
                         <div class="form-group">
-                            <label for="updateusername">Username:</label>
-                            <input class="form-control" type="text" id="username" name="username" value="Username value" maxlength="30">
+                            <label for="username">Username:</label>
+                            <input class="form-control" type="text" id="username" name="username" value="<?= $username; ?>" maxlength="30">
                         </div>   
                     </div>
                     <div class="modal-footer">
@@ -107,12 +127,12 @@
                     </div>
                     <div class="modal-body">
                         
-                        <!-- Login message from PHP file -->
+                        <!-- Update email message from PHP file -->
                         <div id="updateemailmessage"></div>
                         
                         <div class="form-group">
-                            <label for="updateemail">Email:</label>
-                            <input class="form-control" type="email" id="email" name="email" value="Email value" maxlength="50">
+                            <label for="email">Email:</label>
+                            <input class="form-control" type="email" id="email" name="email" value="<?= $email; ?>" maxlength="50">
                         </div>   
                     </div>
                     <div class="modal-footer">
@@ -137,7 +157,7 @@
                     </div>
                     <div class="modal-body">
                         
-                        <!-- Login message from PHP file -->
+                        <!-- Update password message from PHP file -->
                         <div id="updatepasswordmessage"></div>
                         
                         <div class="form-group">
@@ -145,11 +165,11 @@
                             <input class="form-control" type="password" id="currentpassword" name="currentpassword" placeholder="Your current password" maxlength="30">
                         </div>
                         <div class="form-group">
-                            <label for="currentpassword" class="sr-only">Choose a Password:</label>
+                            <label for="password" class="sr-only">Choose a Password:</label>
                             <input class="form-control" type="password" id="password" name="password" placeholder="Choose a password" maxlength="30">
                         </div>
                         <div class="form-group">
-                            <label for="currentpassword" class="sr-only">Confirm Password:</label>
+                            <label for="password2" class="sr-only">Confirm Password:</label>
                             <input class="form-control" type="password" id="password2" name="password2" placeholder="Confirm password" maxlength="30">
                         </div>
                     </div>
@@ -174,6 +194,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/profile.js"></script>
   </body>
 </html>

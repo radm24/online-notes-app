@@ -1,6 +1,9 @@
 <?php 
     session_start();
     include("connection.php");
+    if(isset($_SESSION["user_id"])) {
+        header("location: mynotes.php");
+    }
     
     //logout
     include("logout.php");
@@ -187,7 +190,7 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>
