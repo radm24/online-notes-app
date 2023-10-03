@@ -59,8 +59,8 @@
         //send mail with the link to activatenewemail.php with the current email, new email and activation code
         $message = "Please click on this link to change your email address:\r\n";
         $message .= "http://localhost/radikdeveloper/online-notes-app/activatenewemail.php?email=" . urlencode($current_email) . "&newemail=" . urlencode($new_email) . "&key=$activationKey";
-        mail($new_email, "Email Update for you on Online Notes App", $message, "From:" . "rmcoding@gmail.com");
-        if (mail($new_email, "Email Update for you on Online Notes App", $message, "From:" . "rmcoding@gmail.com")) {
+        $mailOk = mail($new_email, "Email Update for you on Online Notes App", $message, "From:" . "rmcoding@gmail.com");
+        if ($mailOk) {
             echo "<div class='alert alert-success'>An email has been sent to $new_email. Please click on the link to change your email address.</div>";
         }
     }
