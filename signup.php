@@ -18,7 +18,7 @@
     if (empty($_POST["username"])) {
         $errors .= $missingUsername;
     } else {
-        $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
+        $username = filter_var($_POST["username"], FILTER_UNSAFE_RAW);
     }
     //Get email
     if (empty($_POST["email"])) {
@@ -35,11 +35,11 @@
     } else if (!(strlen($_POST["password"]) >= 6 AND preg_match("/[A-Z]/", $_POST["password"]) AND preg_match("/[0-9]/", $_POST["password"]))) {
         $errors .= $invalidPassword;
     } else {
-        $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
+        $password = filter_var($_POST["password"], FILTER_UNSAFE_RAW);
         if (empty($_POST["password2"])) {
             $errors .= $missingPassword2;
         } else {
-            $password2 = filter_var($_POST["password2"], FILTER_SANITIZE_STRING);
+            $password2 = filter_var($_POST["password2"], FILTER_UNSAFE_RAW);
             if ($password !== $password2) {
                 $errors .= $differentPassword;
             }
@@ -75,7 +75,7 @@
     $result = mysqli_query($link, $sql);
     if (!$result) {
         echo '<div class="alert alert-danger">Error running the query!</div>';
-//        echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
+        // echo '<div class="alert alert-danger">' . mysqli_error($link) . '</div>';
         exit;
     }
     $results = mysqli_num_rows($result);
@@ -96,7 +96,7 @@
     }
     //Send the user an email with a link to activate.php with their email and activation code
     $message = "Please click on this link to activate your account\r\n";
-    $message .= "http://raddev.local/activate.php?email=" . urlencode($email) . "&key=$activationKey";
+    $message .= "http://localhost/radikdeveloper/online-notes-app/activate.php?email=" . urlencode($email) . "&key=$activationKey";
     mail($email, 'Confirm your registration', $message, 'From:' . 'rmcoding@gmail.com');
     if (mail($email, 'Confirm your registration', $message, 'From:' . 'rmcoding@gmail.com')) {
         echo "<div class='alert alert-success'>Thank for your registring! A confirmation email has been sent to $email. Please click on the activation link to activate your account.</div>";

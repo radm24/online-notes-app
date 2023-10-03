@@ -20,7 +20,7 @@
     if (empty($_POST["username"])) {
         $errors .= $missingUsername;
     } else {
-        $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
+        $username = filter_var($_POST["username"], FILTER_UNSAFE_RAW);
         if ($username == $current_username) {
             $errors .= $sameUsername;
         }

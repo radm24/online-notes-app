@@ -12,7 +12,7 @@
     if ($count == 1) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $username = $row["username"];
-        $email = $row{"email"};
+        $email = $row["email"];
     } else {
         echo "There was an error retrieving the username and email from the database!";
     }

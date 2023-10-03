@@ -1,4 +1,4 @@
-<!-- This file receives: user_id, generated key to reset password, password1 and password2 ==>
+<!-- This file receives: user_id, generated key to reset password, password1 and password2 -->
 <!-- This file then resets password for user_id if all checks are correct -->
 <?php
     session_start();
@@ -41,11 +41,11 @@
     } else if (!(strlen($_POST["password"]) >= 6 AND preg_match("/[A-Z]/", $_POST["password"]) AND preg_match("/[0-9]/", $_POST["password"]))) {
         $errors .= $invalidPassword;
     } else {
-        $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
+        $password = filter_var($_POST["password"], FILTER_UNSAFE_RAW);
         if (empty($_POST["password2"])) {
             $errors .= $missingPassword2;
         } else {
-            $password2 = filter_var($_POST["password2"], FILTER_SANITIZE_STRING);
+            $password2 = filter_var($_POST["password2"], FILTER_UNSAFE_RAW);
             if ($password !== $password2) {
                 $errors .= $differentPassword;
             }

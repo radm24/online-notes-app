@@ -57,7 +57,7 @@
     }
     //Send email with link to resetpassword.php with the user id and activation code
     $message = "Please click on this link to reset your password:\r\n";
-    $message .= "http://raddev.local/resetpassword.php?user_id=$user_id&key=$key";
+    $message .= "http://localhost/radikdeveloper/online-notes-app/resetpassword.php?user_id=$user_id&key=$key";
     mail($email, "Reset your password", $message, 'From:' . 'rmcoding@gmail.com');
     //If email sent successfully print success message
     if (mail($email, "Reset your password", $message, 'From:' . 'rmcoding@gmail.com')) {

@@ -19,7 +19,7 @@
     if (empty($_POST["loginpassword"])) {
         $errors .= $missingPassword;
     } else {
-        $password = filter_var($_POST["loginpassword"], FILTER_SANITIZE_STRING);
+        $password = filter_var($_POST["loginpassword"], FILTER_UNSAFE_RAW);
     }
     //If there are any errors print error
     if ($errors) {
