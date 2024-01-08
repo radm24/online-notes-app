@@ -15,7 +15,7 @@
         echo "There was an error retrieving the email from the database!";
     }
     //define errors
-    $errors = $email = "";
+    $errors = $email = $new_email = "";
     $missingEmail = '<p><strong>Please enter a new email address!</strong></p>';
     $invalidEmail = '<p><strong>Please enter a valid email address!</strong></p>';
     $sameEmail = '<p><strong>You entered current email address!</strong></p>';
@@ -57,9 +57,13 @@
         echo '<div class="alert alert-danger">There was an error inserting ther user details in the database.</div>';
     } else {
         //send mail with the link to activatenewemail.php with the current email, new email and activation code
+        $email = $new_email;
+        $subject = 'Email Update for you on Online Notes App';
         $message = "Please click on this link to change your email address:\r\n";
         $message .= "http://localhost/radikdeveloper/online-notes-app/activatenewemail.php?email=" . urlencode($current_email) . "&newemail=" . urlencode($new_email) . "&key=$activationKey";
-        $mailOk = mail($new_email, "Email Update for you on Online Notes App", $message, "From:" . "rmcoding@gmail.com");
+        
+        include('sendmail.php');
+
         if ($mailOk) {
             echo "<div class='alert alert-success'>An email has been sent to $new_email. Please click on the link to change your email address.</div>";
         }
